@@ -12,6 +12,8 @@ npm install
 Run tests:
 npx playwright test
 
+Open HTML report:
+npx playwright show-report
 
 📂 Project Structure
 tests/projectBoard.spec.ts - Main test file for test scenarios
