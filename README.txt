@@ -4,8 +4,7 @@ It uses data-driven techniques to improve maintainability and scalability.
 
 🛠️ Setup & Installation
 Clone the repository:
-git clone <your-repo-url>
-cd your-project-folder
+git clone https://github.com/haromets/LOOPQA.git
 
 Install dependencies:
 npm install
