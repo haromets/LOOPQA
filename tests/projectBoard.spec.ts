@@ -10,7 +10,7 @@ async function login(page) {
 }
 
 
-testCases.forEach(({ name, app, column, task, labels }) => {
+testCases.forEach(({ name, app, column, taskName, labels }) => {
   test(name, async ({ page }) => {
     await login(page);
 
@@ -24,12 +24,13 @@ testCases.forEach(({ name, app, column, task, labels }) => {
 
     // Locate task in the correct column
     const columnElement = page.locator('.flex.flex-col.w-80.bg-gray-50.rounded-lg.p-4', { hasText: column });
-    const taskElement = columnElement.locator('.bg-white.p-4.rounded-lg.shadow-sm.border.border-gray-200.hover\\:shadow-md.transition-shadow', { hasText: task });
+    const taskElement = columnElement.locator('.bg-white.p-4.rounded-lg.shadow-sm.border.border-gray-200.hover\\:shadow-md.transition-shadow');
+    const task_Name = taskElement.locator('.font-medium.text-gray-900.mb-2', { hasText: taskName });
 
-    // Validate task visibility
-    await expect(taskElement, `Expect task "${task}"`).toBeVisible();
+    // Validate taskName visibility
+    await expect(task_Name, `Expect task "${taskName}"`).toBeVisible();
 
-    // Validate labels dynamically
+    // Validate labels 
     for (const label of labels) {
       await expect.soft(
         taskElement.locator('.flex.flex-wrap.gap-2.mb-3', { hasText: label }),`Expect label "${label}"`).toBeVisible();
